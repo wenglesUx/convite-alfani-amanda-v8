@@ -6,7 +6,7 @@
 
 # Endereços do site antigo (chá de casa nova) levam para as seções novas
 [[redirects]]
-  from = "/confirmação.html"
+  from = "/confirma%C3%A7%C3%A3o.html"
   to = "/#rsvp"
   status = 301
 
