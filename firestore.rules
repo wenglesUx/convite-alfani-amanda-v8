@@ -19,16 +19,20 @@ service cloud.firestore {
     }
 
     // Status público de cada presente: todos leem; só dá para marcar como
-    // escolhido uma vez (criar o documento). Ninguém altera nem apaga pelo site.
+    // escolhido uma vez (criar o documento). Ninguém altera pelo site.
+    // O admin pode apagar (painel → "Apagar todos os presentes escolhidos",
+    // usado para zerar a lista depois de testes).
     match /presentes-casamento-2026/{itemId} {
       allow read: if true;
       allow create: if request.resource.data.disponivel == false
                     && request.resource.data.id is int
                     && request.resource.data.keys().hasOnly(['id', 'item', 'categoria', 'disponivel', 'escolhidoEm']);
-      allow update, delete: if false;
+      allow update: if false;
+      allow delete: if admin();
     }
 
     // Quem escolheu o quê (nome + WhatsApp): o site público só grava.
+    // O admin pode apagar junto com o reset da lista de presentes.
     match /escolhas-presentes-2026/{escolhaId} {
       allow create: if request.resource.data.keys().hasOnly(['nome', 'telefone', 'itens', 'criadoEm'])
                     && request.resource.data.nome is string
@@ -36,7 +40,8 @@ service cloud.firestore {
                     && request.resource.data.itens is list
                     && request.resource.data.itens.size() > 0;
       allow read: if admin();     // só o admin lê
-      allow update, delete: if false;
+      allow update: if false;
+      allow delete: if admin();
     }
 
     // RSVP: um documento por telefone (o id é o próprio número).

@@ -15,6 +15,8 @@ let filtro = 'pendentes';
 let termo = '';
 let banco = null;
 let quemSou = '';             // quem está logado (vai em "lembrado por")
+let totalPresentes = 0;       // itens escolhidos (presentes-casamento-2026)
+let totalEscolhas = 0;        // registros de quem escolheu (escolhas-presentes-2026)
 
 // ---- Texto padrão do lembrete -------------------------------------------
 function textoPadrao() {
@@ -222,6 +224,51 @@ $('#copiar-numeros').addEventListener('click', async () => {
     }
 });
 
+// ---- Lista de presentes (zerar depois dos testes) -----------------------
+function renderPresentes() {
+    const total = totalPresentes + totalEscolhas;
+    $('#presentes-resumo').textContent = total
+        ? `${totalPresentes} presente(s) escolhido(s) · ${totalEscolhas} registro(s) de quem escolheu.`
+        : 'Nenhum presente escolhido ainda.';
+    $('#zerar-presentes').disabled = total === 0;
+}
+
+async function zerarPresentes() {
+    if (PREVIA || !banco) { mostrarAviso('Modo prévia: nada para apagar.'); return; }
+    const total = totalPresentes + totalEscolhas;
+    if (!total) { mostrarAviso('Não há presentes escolhidos para apagar.'); return; }
+    const ok = confirm(
+        `Apagar ${totalPresentes} presente(s) escolhido(s) e ${totalEscolhas} registro(s) de quem escolheu?\n\n` +
+        'Isso libera todos os itens da lista novamente. Não pode ser desfeito.',
+    );
+    if (!ok) return;
+
+    const botao = $('#zerar-presentes');
+    botao.disabled = true;
+    botao.textContent = 'Apagando…';
+    try {
+        const { fs, db } = banco;
+        const [presentesSnap, escolhasSnap] = await Promise.all([
+            fs.getDocs(fs.collection(db, CONF.colecoes.presentes)),
+            fs.getDocs(fs.collection(db, CONF.colecoes.escolhas)),
+        ]);
+        const refs = [...presentesSnap.docs, ...escolhasSnap.docs].map((d) => d.ref);
+        for (let i = 0; i < refs.length; i += 450) {
+            const lote = fs.writeBatch(db);
+            refs.slice(i, i + 450).forEach((ref) => lote.delete(ref));
+            await lote.commit();
+        }
+        mostrarAviso('Lista de presentes zerada.');
+    } catch (e) {
+        console.error(e);
+        mostrarAviso('Não foi possível apagar. Confira as regras do Firestore e tente de novo.');
+    } finally {
+        botao.textContent = 'Apagar todos os presentes escolhidos';
+        renderPresentes();
+    }
+}
+$('#zerar-presentes').addEventListener('click', zerarPresentes);
+
 // ---- Telas ---------------------------------------------------------------
 function mostrar(tela) {
     $('#carregando').hidden = true;
@@ -244,6 +291,7 @@ function iniciarPrevia() {
     ];
     mostrar('painel');
     render();
+    renderPresentes();
 }
 
 // ---- Firebase: login + dados em tempo real -------------------------------
@@ -255,17 +303,17 @@ async function iniciar() {
     }
     const auth = await import(`https://www.gstatic.com/firebasejs/${CONF.versaoFirebase}/firebase-auth.js`);
     const sessao = auth.getAuth(banco.app);
-    let pararDeOuvir = null;
+    let pararDeOuvir = [];
 
     auth.onAuthStateChanged(sessao, (usuario) => {
-        pararDeOuvir?.();
-        pararDeOuvir = null;
+        pararDeOuvir.forEach((parar) => parar());
+        pararDeOuvir = [];
         if (!usuario) { mostrar('login'); return; }
 
         quemSou = usuario.displayName || (usuario.email || '').split('@')[0] || 'Admin';
 
         const { fs, db } = banco;
-        pararDeOuvir = fs.onSnapshot(
+        pararDeOuvir.push(fs.onSnapshot(
             fs.query(fs.collection(db, CONF.colecoes.rsvp)),
             (snap) => {
                 convidados = snap.docs.map((d) => ({ telefone: d.id, ...d.data() }))
@@ -284,7 +332,17 @@ async function iniciar() {
                 mostrar('painel');
                 mostrarAviso('Não foi possível carregar as confirmações. Recarregue a página.');
             },
-        );
+        ));
+        pararDeOuvir.push(fs.onSnapshot(
+            fs.collection(db, CONF.colecoes.presentes),
+            (snap) => { totalPresentes = snap.size; renderPresentes(); },
+            (e) => console.error(e),
+        ));
+        pararDeOuvir.push(fs.onSnapshot(
+            fs.collection(db, CONF.colecoes.escolhas),
+            (snap) => { totalEscolhas = snap.size; renderPresentes(); },
+            (e) => console.error(e),
+        ));
     });
 
     $('#form-login').addEventListener('submit', async (e) => {
