@@ -27,7 +27,7 @@ const cozinha = [
     { id: 109, titulo: "cozinha", item: "Ralador", img: "images/descascador.webp" },
     { id: 110, titulo: "cozinha", item: "Peneira", img: "images/peneira.webp" },
     { id: 111, titulo: "cozinha", item: "Escorredor de macarrão", img: "images/escorredor-de-macarrao.jpg" },
-    { id: 112, titulo: "cozinha", item: "Escorredor de louça", img: "images/escorredor-de-louca.jpg" },
+    { id: 112, titulo: "cozinha", item: "Escorredor de louça", img: "images/escorredor-de-louca.webp" },
     { id: 113, titulo: "cozinha", item: "Tábua de corte", img: "images/tabua-de-corte.webp" },
     { id: 114, titulo: "cozinha", item: "Potes com tampa", img: "images/potes-com-tampa.webp" },
     { id: 115, titulo: "cozinha", item: "Potes para mantimentos", img: "images/pote-mantimentos.jpeg" },
@@ -37,7 +37,7 @@ const cozinha = [
 ];
 
 const mesa = [
-    { id: 201, titulo: "mesa", item: "Jogo de pratos", img: "images/jogo-de-aparelho-de-jantar.jpg" },
+    { id: 201, titulo: "mesa", item: "Jogo de pratos", img: "images/jogo-de-aparelho-de-jantar.webp" },
     { id: 202, titulo: "mesa", item: "Jogo de copos", img: "images/copos-de-vidro.webp" },
     { id: 203, titulo: "mesa", item: "Jogo de xícaras", img: "images/jogo-de-xicaras.webp" },
     { id: 204, titulo: "mesa", item: "Talheres", img: "images/jogo-de-talher.webp" },
@@ -62,7 +62,7 @@ const limpeza = [
 
 const banheiro = [
     { id: 401, titulo: "banheiro", item: "Toalhas de banho", img: "images/toalha-de-banho.webp" },
-    { id: 402, titulo: "banheiro", item: "Toalhas de rosto", img: "images/toalha-de-rosto.jpeg" },
+    { id: 402, titulo: "banheiro", item: "Toalhas de rosto", img: "images/toalha-de-rosto.webp" },
     { id: 403, titulo: "banheiro", item: "Jogo de banheiro", img: "images/kit-lavabo.webp" },
     { id: 404, titulo: "banheiro", item: "Porta-escova de dentes", img: "images/porta-escova.webp" },
     { id: 405, titulo: "banheiro", item: "Saboneteira", img: "images/saboneteira.webp" },
@@ -83,7 +83,7 @@ const quarto = [
 const lavanderia = [
     { id: 601, titulo: "lavanderia", item: "Cesto para roupas", img: "images/cesto-de-roupa.webp" },
     { id: 602, titulo: "lavanderia", item: "Balde", img: "images/balde.webp" },
-    { id: 603, titulo: "lavanderia", item: "Bacia", img: "images/bacia.jpeg" },
+    { id: 603, titulo: "lavanderia", item: "Bacia", img: "images/bacia.webp" },
     { id: 604, titulo: "lavanderia", item: "Tábua de passar roupa", img: "images/tabua-de-passar.jpg" },
     { id: 605, titulo: "lavanderia", item: "Cesto/organizador para produtos de limpeza", img: "images/organizador-produtos-limpeza.webp" },
 ];

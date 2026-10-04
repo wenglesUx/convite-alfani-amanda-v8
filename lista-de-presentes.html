@@ -78,6 +78,19 @@
                 <li><span>3</span><p>Confirme: os noivos são avisados na hora</p></li>
             </ol>
             <p class="lista-intro__nota">Quando um presente é confirmado, ele sai da lista para ninguém repetir.</p>
+
+            <!-- paleta sugerida para os presentes -->
+            <div class="paleta" aria-labelledby="paleta-titulo">
+                <h2 class="paleta__titulo" id="paleta-titulo">Paleta de cores</h2>
+                <p class="paleta__texto">Se for presentear, dê preferência a itens nestas cores.</p>
+                <ul class="paleta__cores">
+                    <li><span class="paleta__amostra" style="--cor:#0b0c0e"></span>Preto</li>
+                    <li><span class="paleta__amostra" style="--cor:#969899"></span>Cinza</li>
+                    <li><span class="paleta__amostra paleta__amostra--claro" style="--cor:#ecebe8"></span>Branco</li>
+                    <li><span class="paleta__amostra" style="--cor:#c4ab82"></span>Bege</li>
+                    <li><span class="paleta__amostra paleta__amostra--bambu" style="--cor:#b08f62"></span>Bambu</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -150,6 +163,13 @@
         <ul class="revisao" id="revisao"></ul>
 
         <div class="modal-presente__identificacao" id="lista-identificacao"></div>
+
+        <p class="modal-presente__paleta">
+            <span class="paleta__mini" aria-hidden="true">
+                <i style="--cor:#0b0c0e"></i><i style="--cor:#969899"></i><i style="--cor:#ecebe8"></i><i style="--cor:#c4ab82"></i><i style="--cor:#b08f62"></i>
+            </span>
+            Cores sugeridas: preto, cinza, branco, bege e bambu.
+        </p>
 
         <p class="modal-presente__alerta">
             <i class="bi bi-info-circle"></i>
