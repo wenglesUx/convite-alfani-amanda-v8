@@ -16,8 +16,8 @@ window.CASAMENTO = {
        Enquanto a apikey estiver vazia, o convidado vê um botão para
        avisar o noivo/a noiva pelo WhatsApp dele mesmo (plano B).          */
     organizadores: [
-        { nome: 'Álfani', telefone: '5561994061823', apikey: '' },
-        { nome: 'Amanda', telefone: '5561984066880', apikey: '' },
+        { nome: 'Álfani', telefone: '556194061823', apikey: '4032215' },
+        { nome: 'Amanda', telefone: '556184066880', apikey: '5398292' },
     ],
 
     /* O acesso ao painel (painel.html) é controlado pelo Firebase:
