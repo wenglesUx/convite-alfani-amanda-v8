@@ -5,26 +5,28 @@
 
 window.CASAMENTO = {
 
-    /* ---- Organizadores que recebem os avisos ---------------------------
+    /* ---- Noivos: recebem os avisos de confirmação e de presentes -------
        Os avisos chegam AUTOMATICAMENTE pelo CallMeBot (gratuito).
-       Cada organizador precisa ativar o próprio número UMA vez:
+       Cada um precisa ativar o próprio número UMA vez:
          1. Salvar o contato do CallMeBot: +34 684 770 005
             (confira o número atual em https://www.callmebot.com/blog/free-api-whatsapp-messages/)
          2. Enviar para ele, pelo WhatsApp: I allow callmebot to send me messages
          3. Em até 2 minutos chega a "apikey". Cole abaixo.
        telefone: DDI + DDD + número, só dígitos (ex.: 5561999998888)
        Enquanto a apikey estiver vazia, o convidado vê um botão para
-       avisar aquele organizador pelo WhatsApp dele mesmo (plano B).      */
+       avisar o noivo/a noiva pelo WhatsApp dele mesmo (plano B).          */
     organizadores: [
-        { nome: 'Organizador 1', telefone: '556182103445', apikey: '', email: '' },   // TODO
-        { nome: 'Organizador 2', telefone: '',             apikey: '', email: '' },   // TODO
+        { nome: 'Álfani', telefone: '5561994061823', apikey: '' },
+        { nome: 'Amanda', telefone: '5561984066880', apikey: '' },
     ],
-    /* "email" é o login do organizador no painel (painel.html).
-       Crie o usuário em: Console do Firebase → Authentication → Usuários →
-       Adicionar usuário (e-mail + senha). Use o mesmo e-mail em firestore.rules. */
+
+    /* O acesso ao painel (painel.html) é controlado pelo Firebase:
+       crie o seu login em Authentication → Usuários → Adicionar usuário
+       e coloque o mesmo e-mail em firestore.rules (função admin).
+       O e-mail NÃO fica aqui porque este arquivo é público.               */
 
     /* Endereço público do site (vai no lembrete). Ex.: https://alfani-e-amanda.netlify.app */
-    siteUrl: '',   // TODO
+    siteUrl: 'https://alfani-e-amanda.netlify.app',   // troque se o nome do site no Netlify for outro
 
     /* ---- Banco de dados (Firebase / Firestore) ------------------------- */
     firebase: {
@@ -39,7 +41,7 @@ window.CASAMENTO = {
     colecoes: {
         presentes: 'presentes-casamento-2026',   // status público de cada item (livre/escolhido)
         rsvp: 'rsvp-casamento-2026',             // um documento por telefone (convite individual)
-        escolhas: 'escolhas-presentes-2026',     // quem escolheu o quê (nome + WhatsApp), só os organizadores leem
+        escolhas: 'escolhas-presentes-2026',     // quem escolheu o quê (nome + WhatsApp), só o admin lê (pelo painel ou Console)
     },
 
     /* ---- Evento ---------------------------------------------------------- */

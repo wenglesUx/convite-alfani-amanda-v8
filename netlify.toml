@@ -1,0 +1,68 @@
+# Configuração do Netlify — site do casamento de Álfani & Amanda
+# (site estático: não há etapa de build)
+
+[build]
+  publish = "."
+
+# Endereços do site antigo (chá de casa nova) levam para as seções novas
+[[redirects]]
+  from = "/confirmação.html"
+  to = "/#rsvp"
+  status = 301
+
+[[redirects]]
+  from = "/confirmacao.html"
+  to = "/#rsvp"
+  status = 301
+
+[[redirects]]
+  from = "/lista"
+  to = "/lista-de-presentes.html"
+  status = 301
+
+[[redirects]]
+  from = "/presentes"
+  to = "/lista-de-presentes.html"
+  status = 301
+
+[[redirects]]
+  from = "/painel"
+  to = "/painel.html"
+  status = 301
+
+# Cabeçalhos de segurança para todas as páginas
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# O painel nunca aparece em buscadores
+[[headers]]
+  for = "/painel.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
+
+# Imagens e fontes: cache longo
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/layout-images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# HTML, CSS e JS: sempre a versão mais nova (para as alterações aparecerem na hora)
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "no-cache"

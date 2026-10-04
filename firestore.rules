@@ -2,7 +2,7 @@ rules_version = '2';
 
 // Regras do Firestore para o site de Álfani & Amanda.
 // Cole no Console do Firebase → Firestore Database → Regras → Publicar.
-// Os organizadores leem tudo pelo Console (lá as regras não se aplicam) ou pelo painel.
+// O administrador lê tudo pelo Console (lá as regras não se aplicam) ou pelo painel.
 //
 // ATENÇÃO: estas regras substituem as atuais do projeto inteiro.
 // Se a coleção antiga "presentes" (chá de casa nova) ainda for usada,
@@ -11,11 +11,11 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Organizadores que podem entrar no painel (painel.html).
-    // Use os MESMOS e-mails cadastrados em Authentication e em config.js.
-    function organizador() {
+    // Quem pode entrar no painel (painel.html): o mesmo e-mail cadastrado
+    // em Authentication. Para mais de uma pessoa: ['a@x.com', 'b@y.com'].
+    function admin() {
       return request.auth != null
-          && request.auth.token.email in ['organizador1@exemplo.com', 'organizador2@exemplo.com'];  // TODO
+          && request.auth.token.email in ['vitalsolucoesweb@gmail.com'];
     }
 
     // Status público de cada presente: todos leem; só dá para marcar como
@@ -35,7 +35,7 @@ service cloud.firestore {
                     && request.resource.data.telefone.matches('^55[0-9]{10,11}$')
                     && request.resource.data.itens is list
                     && request.resource.data.itens.size() > 0;
-      allow read: if organizador();     // só os organizadores leem
+      allow read: if admin();     // só o admin lê
       allow update, delete: if false;
     }
 
@@ -44,7 +44,7 @@ service cloud.firestore {
     // para ninguém baixar a lista inteira de convidados.
     match /rsvp-casamento-2026/{telefone} {
       allow get: if true;
-      allow list: if organizador();      // só o painel lista todas as confirmações
+      allow list: if admin();      // só o painel lista todas as confirmações
       allow create: if telefone.matches('^55[0-9]{10,11}$')
                     && request.resource.data.telefone == telefone
                     && request.resource.data.presenca in ['sim', 'nao']
@@ -54,7 +54,7 @@ service cloud.firestore {
                     && request.resource.data.presenca in ['sim', 'nao']
                     && request.resource.data.nome == resource.data.nome;
       // painel: marcar/desmarcar "lembrado" (não mexe no resto da resposta)
-      allow update: if organizador()
+      allow update: if admin()
                     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lembreteEm', 'lembretePor']);
       allow delete: if false;
     }

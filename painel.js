@@ -1,21 +1,20 @@
 /* =========================================================
-   Painel dos organizadores — lembrete para quem confirmou
-   - login com e-mail e senha (Firebase Authentication)
+   Painel do administrador — lembrete para quem confirmou
+   - login com e-mail e senha (Firebase Authentication); quem pode entrar
+     é definido nas regras do Firestore (função admin)
    - lista as confirmações do banco em tempo real
-   - botão "Lembrar" abre o WhatsApp do organizador com a mensagem pronta
-   - marca no banco quem já foi lembrado (os dois organizadores veem igual)
+   - botão "Lembrar" abre o seu WhatsApp com a mensagem pronta
+   - marca no banco quem já foi lembrado
    ========================================================= */
 import { CONF, PREVIA, conectar, formatarTelefone, linkWhats } from './servicos.js';
 
 const $ = (s) => document.querySelector(s);
-const organizadores = (CONF.organizadores ?? []);
-const emailsOrganizadores = organizadores.map((o) => (o.email || '').toLowerCase()).filter(Boolean);
 
 let convidados = [];          // documentos do RSVP
 let filtro = 'pendentes';
 let termo = '';
 let banco = null;
-let quemSou = '';             // nome do organizador logado (vai em "lembrado por")
+let quemSou = '';             // quem está logado (vai em "lembrado por")
 
 // ---- Texto padrão do lembrete -------------------------------------------
 function textoPadrao() {
@@ -234,7 +233,7 @@ function mostrar(tela) {
 // ---- Prévia (sem banco): dados de exemplo --------------------------------
 function iniciarPrevia() {
     $('#aviso-previa').hidden = false;
-    quemSou = organizadores[0]?.nome ?? 'Organizador';
+    quemSou = 'Admin';
     const h = (dias, horas = 0) => new Date(Date.now() - (dias * 24 + horas) * 3600e3);
     convidados = [
         { nome: 'Maria da Silva (exemplo)',  telefone: '5561982103445', presenca: 'sim', atualizadoEm: h(6) },
@@ -263,13 +262,7 @@ async function iniciar() {
         pararDeOuvir = null;
         if (!usuario) { mostrar('login'); return; }
 
-        const email = (usuario.email || '').toLowerCase();
-        if (emailsOrganizadores.length && !emailsOrganizadores.includes(email)) {
-            auth.signOut(sessao);
-            erroLogin('Este e-mail não está na lista de organizadores (config.js).');
-            return;
-        }
-        quemSou = organizadores.find((o) => (o.email || '').toLowerCase() === email)?.nome || email;
+        quemSou = usuario.displayName || (usuario.email || '').split('@')[0] || 'Admin';
 
         const { fs, db } = banco;
         pararDeOuvir = fs.onSnapshot(
@@ -282,8 +275,14 @@ async function iniciar() {
             },
             (e) => {
                 console.error(e);
+                if (e.code === 'permission-denied') {
+                    // logou, mas o e-mail não está autorizado nas regras do Firestore
+                    auth.signOut(sessao);
+                    erroLogin('Este login não tem acesso ao painel. Confira o e-mail em firestore.rules (função admin).');
+                    return;
+                }
                 mostrar('painel');
-                mostrarAviso('Sem permissão para ler as confirmações. Confira as regras do Firestore.');
+                mostrarAviso('Não foi possível carregar as confirmações. Recarregue a página.');
             },
         );
     });

@@ -26,8 +26,8 @@ const cozinha = [
     { id: 108, titulo: "cozinha", item: "Fouet", img: "images/fouet.webp" },
     { id: 109, titulo: "cozinha", item: "Ralador", img: "images/descascador.webp" },
     { id: 110, titulo: "cozinha", item: "Peneira", img: "images/peneira.webp" },
-    { id: 111, titulo: "cozinha", item: "Escorredor de macarrão", img: "images/escorredor-de-macarrão.jpg" },
-    { id: 112, titulo: "cozinha", item: "Escorredor de louça", img: "images/escorredor-de-louça.jpg" },
+    { id: 111, titulo: "cozinha", item: "Escorredor de macarrão", img: "images/escorredor-de-macarrao.jpg" },
+    { id: 112, titulo: "cozinha", item: "Escorredor de louça", img: "images/escorredor-de-louca.jpg" },
     { id: 113, titulo: "cozinha", item: "Tábua de corte", img: "images/tabua-de-corte.webp" },
     { id: 114, titulo: "cozinha", item: "Potes com tampa", img: "images/potes-com-tampa.webp" },
     { id: 115, titulo: "cozinha", item: "Potes para mantimentos", img: "images/pote-mantimentos.jpeg" },
@@ -61,7 +61,7 @@ const limpeza = [
 ];
 
 const banheiro = [
-    { id: 401, titulo: "banheiro", item: "Toalhas de banho", img: "images/toalha de banho.webp" },
+    { id: 401, titulo: "banheiro", item: "Toalhas de banho", img: "images/toalha-de-banho.webp" },
     { id: 402, titulo: "banheiro", item: "Toalhas de rosto", img: "images/toalha-de-rosto.jpeg" },
     { id: 403, titulo: "banheiro", item: "Jogo de banheiro", img: "images/kit-lavabo.webp" },
     { id: 404, titulo: "banheiro", item: "Porta-escova de dentes", img: "images/porta-escova.webp" },
@@ -73,7 +73,7 @@ const banheiro = [
 
 const quarto = [
     { id: 501, titulo: "quarto", item: "Jogo de cama", img: "images/jogo_de_cama.webp" },
-    { id: 502, titulo: "quarto", item: "Lençol com elástico (virol)", img: "images/jogo-de virou.webp" },
+    { id: 502, titulo: "quarto", item: "Lençol com elástico (virol)", img: "images/jogo-de-virou.webp" },
     { id: 503, titulo: "quarto", item: "Cobertor", img: "images/cobertor-manta.webp" },
     { id: 504, titulo: "quarto", item: "Travesseiros", img: "images/jogo-de-travesseiro.webp" },
     { id: 505, titulo: "quarto", item: "Capas para travesseiro", img: "images/capa-de-travesseiro.webp" },
@@ -92,13 +92,13 @@ const extras = [
     { id: 701, titulo: "opções extras", item: "Kit de potes de vidro", img: "images/pote-de-vidro.avif" },
     { id: 702, titulo: "opções extras", item: "Kit de potes plásticos", img: "images/potes-plasticos.webp" },
     { id: 703, titulo: "opções extras", item: "Jogo americano", img: "images/jogo-americano.webp" },
-    { id: 704, titulo: "opções extras", item: "Toalha de mesa", img: "images/toalha de mesa.webp" },
+    { id: 704, titulo: "opções extras", item: "Toalha de mesa", img: "images/toalha-de-mesa.webp" },
     { id: 705, titulo: "opções extras", item: "Kit de facas", img: "images/jogo-de-faca.webp" },
     { id: 706, titulo: "opções extras", item: "Escorredor de talheres", img: "images/escorredor-de-talheres.webp" },
     { id: 707, titulo: "opções extras", item: "Porta-temperos", img: "images/616-porta-temepros.jpg" },
     { id: 708, titulo: "opções extras", item: "Porta-condimentos", img: "images/porta-condimentos.webp" },
     { id: 709, titulo: "opções extras", item: "Organizadores de gaveta", img: "images/organizador-de-gaveta.webp" },
-    { id: 710, titulo: "opções extras", item: "Tapetes para a casa", img: "images/tapete para a sala.jpeg" },
+    { id: 710, titulo: "opções extras", item: "Tapetes para a casa", img: "images/tapete-para-a-sala.jpeg" },
 ];
 
 const presentes = [cozinha, mesa, limpeza, banheiro, quarto, lavanderia, extras];

@@ -230,8 +230,8 @@ export function botoesPendentes(container, pendentes, texto) {
     container.hidden = false;
     const p = document.createElement('p');
     p.textContent = pendentes.length > 1
-        ? 'Para concluir, envie o aviso aos organizadores:'
-        : 'Para concluir, envie o aviso ao organizador:';
+        ? 'Para concluir, avise os noivos pelo WhatsApp:'
+        : 'Para concluir, avise pelo WhatsApp:';
     container.appendChild(p);
     pendentes.forEach((o) => {
         const a = document.createElement('a');
