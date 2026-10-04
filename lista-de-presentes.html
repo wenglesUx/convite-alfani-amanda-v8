@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes · Álfani &amp; Amanda</title>
+    <meta name="description" content="Lista de presentes do casamento de Álfani e Amanda — 13.11.2026.">
+    <meta name="theme-color" content="#f7fafd">
+
+    <meta property="og:title" content="Lista de Presentes · Álfani & Amanda" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Escolha um presente para o novo lar de Álfani & Amanda." />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S8 41 8 24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 17-24 32-24 32z' fill='%235f85ac'/%3E%3C/svg%3E">
+
+    <!-- fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lexend:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="/convite.css">
+    <link rel="stylesheet" href="/lista.css">
+</head>
+<body class="pagina-lista">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <symbol id="coracao" viewBox="0 0 24 22">
+            <path d="M12 21.5S0 14.2 0 6.4A6.3 6.3 0 0 1 12 3.3a6.3 6.3 0 0 1 12 3.1c0 7.8-12 15.1-12 15.1z"/>
+        </symbol>
+        <symbol id="divisor" viewBox="0 0 160 16">
+            <path d="M0 8h66M94 8h66" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M80 14.5S72 9.7 72 4.7a4 4 0 0 1 8-1.9 4 4 0 0 1 8 1.9c0 5-8 9.8-8 9.8z" fill="currentColor"/>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ============ TOPO ============ -->
+<header class="topo rolado">
+    <nav class="menu" aria-label="Navegação">
+        <a href="/index.html" class="menu__marca" aria-label="Voltar ao convite">A<svg><use href="#coracao"/></svg>A</a>
+        <a href="/index.html" class="lista-voltar"><i class="bi bi-arrow-left"></i> Voltar ao convite</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- ============ APRESENTAÇÃO ============ -->
+    <section class="secao secao--auto lista-intro">
+        <img class="flor flor--tl flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--tr flor--pequena" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo conteudo--estreito">
+            <p class="sobretitulo">Álfani &amp; Amanda · 13 · 11 · 2026</p>
+            <h1 class="titulo lista-intro__titulo">
+                Lista de Presentes
+                <svg class="titulo__coracao" aria-hidden="true"><use href="#coracao"/></svg>
+            </h1>
+            <svg class="divisor" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <p class="lista-intro__texto">
+                Escolhemos com carinho alguns itens para o nosso novo lar. Fique à vontade para escolher
+                o que quiser, ou apenas venha celebrar com a gente: sua presença já é o nosso maior presente.
+            </p>
+
+            <ol class="passos" aria-label="Como funciona">
+                <li><span>1</span><p>Marque um ou mais presentes</p></li>
+                <li><span>2</span><p>Informe seu nome e WhatsApp</p></li>
+                <li><span>3</span><p>Confirme: os noivos são avisados na hora</p></li>
+            </ol>
+            <p class="lista-intro__nota">Quando um presente é confirmado, ele sai da lista para ninguém repetir.</p>
+        </div>
+    </section>
+
+    <!-- ============ LISTA ============ -->
+    <section class="secao secao--auto lista" id="lista" aria-label="Presentes">
+        <div class="lista__barra" id="barra">
+            <div class="lista__barra-interna">
+                <div class="filtros" role="tablist" aria-label="Categorias" id="filtros"></div>
+                <label class="busca">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                    <input type="search" id="busca" placeholder="Buscar presente" aria-label="Buscar presente" autocomplete="off">
+                </label>
+            </div>
+        </div>
+
+        <p class="lista__resumo" id="resumo" aria-live="polite"></p>
+        <p class="lista__aviso" id="aviso-conexao" hidden></p>
+
+        <div class="categorias" id="categorias">
+            <!-- preenchido por lista.js -->
+        </div>
+
+        <p class="lista__vazio" id="vazio" hidden>Nenhum presente encontrado para essa busca.</p>
+    </section>
+
+    <!-- ============ PIX (aparece só se houver chave em lista.js) ============ -->
+    <section class="secao secao--auto pix" id="pix" hidden>
+        <div class="conteudo conteudo--estreito">
+            <h2 class="titulo">Prefere contribuir com Pix?</h2>
+            <svg class="divisor" aria-hidden="true"><use href="#divisor"/></svg>
+            <p class="pix__texto">Se for mais prático, você também pode contribuir com qualquer valor pelo Pix.</p>
+            <div class="pix__cartao">
+                <span class="pix__rotulo">Chave Pix</span>
+                <code id="pix-chave"></code>
+                <span class="pix__titular" id="pix-titular"></span>
+                <button type="button" class="botao botao--contorno" id="pix-copiar"><i class="bi bi-copy"></i> Copiar chave</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="rodape">
+    <p>Dúvidas? Estamos a uma mensagem de distância.</p>
+    <a class="rodape__whats" id="link-whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+</footer>
+
+<!-- ============ BARRA DA SELEÇÃO ============ -->
+<div class="selecao-barra" id="selecao-barra" hidden>
+    <div class="selecao-barra__interna">
+        <p><strong id="selecao-qtd">0</strong> <span id="selecao-rotulo">presente selecionado</span></p>
+        <button type="button" class="botao botao--cheio botao--auto" id="selecao-revisar">
+            Revisar e confirmar <i class="bi bi-arrow-right"></i>
+        </button>
+    </div>
+</div>
+
+<!-- ============ REVISÃO E CONFIRMAÇÃO ============ -->
+<dialog class="modal-presente" id="modal" aria-labelledby="modal-titulo">
+    <form method="dialog" class="modal-presente__fechar-form">
+        <button class="modal-presente__fechar" aria-label="Fechar"><i class="bi bi-x-lg"></i></button>
+    </form>
+
+    <div class="modal-presente__corpo" id="modal-corpo">
+        <p class="modal-presente__categoria">Seus presentes</p>
+        <h2 class="modal-presente__titulo" id="modal-titulo">Revise sua escolha</h2>
+
+        <ul class="revisao" id="revisao"></ul>
+
+        <div class="modal-presente__identificacao" id="lista-identificacao"></div>
+
+        <p class="modal-presente__alerta">
+            <i class="bi bi-info-circle"></i>
+            Ao confirmar, estes itens saem da lista e ficam indisponíveis para os outros convidados.
+        </p>
+
+        <p class="modal-presente__erro" id="modal-erro" hidden></p>
+
+        <div class="modal-presente__acoes">
+            <button type="button" class="botao botao--contorno" id="modal-voltar">Continuar escolhendo</button>
+            <button type="button" class="botao botao--cheio botao--auto" id="modal-confirmar">
+                <i class="bi bi-gift"></i> Confirmar presentes
+            </button>
+        </div>
+    </div>
+
+    <!-- depois de confirmar -->
+    <div class="modal-presente__sucesso" id="modal-sucesso" hidden>
+        <svg class="modal-presente__coracao" aria-hidden="true"><use href="#coracao"/></svg>
+        <h2 class="modal-presente__titulo">Obrigado pelo carinho!</h2>
+        <p id="modal-sucesso-texto"></p>
+        <ul class="revisao revisao--final" id="revisao-final"></ul>
+        <div class="pendentes" id="lista-pendentes" hidden></div>
+        <button type="button" class="botao botao--cheio botao--auto" id="modal-concluir">Voltar para a lista</button>
+    </div>
+</dialog>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script src="/config.js"></script>
+<script src="/presentes.js"></script>
+<script type="module" src="/lista.js"></script>
+</body>
+</html>

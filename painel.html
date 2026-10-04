@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Painel · Álfani &amp; Amanda</title>
+    <meta name="theme-color" content="#f7fafd">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S8 41 8 24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 17-24 32-24 32z' fill='%235f85ac'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lexend:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="/convite.css">
+    <link rel="stylesheet" href="/lista.css">
+    <link rel="stylesheet" href="/painel.css">
+</head>
+<body class="pagina-painel">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <symbol id="coracao" viewBox="0 0 24 22">
+            <path d="M12 21.5S0 14.2 0 6.4A6.3 6.3 0 0 1 12 3.3a6.3 6.3 0 0 1 12 3.1c0 7.8-12 15.1-12 15.1z"/>
+        </symbol>
+    </defs>
+</svg>
+
+<header class="topo rolado">
+    <nav class="menu" aria-label="Painel">
+        <a href="/index.html" class="menu__marca" aria-label="Ir para o convite">A<svg><use href="#coracao"/></svg>A</a>
+        <span class="painel-topo__titulo">Painel dos organizadores</span>
+        <button type="button" class="botao-link painel-topo__sair" id="sair" hidden><i class="bi bi-box-arrow-right"></i> Sair</button>
+    </nav>
+</header>
+
+<main class="painel">
+
+    <p class="painel__previa" id="aviso-previa" hidden>
+        <i class="bi bi-eye"></i>
+        <span>Modo prévia: os convidados abaixo são <strong>exemplos</strong>. No site publicado, entra quem confirmou de verdade.</span>
+    </p>
+
+    <!-- ============ LOGIN ============ -->
+    <section class="painel-login" id="tela-login" hidden>
+        <form class="cartao-form" id="form-login" novalidate>
+            <h1 class="painel-login__titulo">Entrar</h1>
+            <p class="painel-login__texto">Área restrita aos organizadores do casamento.</p>
+            <label class="campo">
+                <span class="campo__rotulo">E-mail</span>
+                <input type="text" id="login-email" inputmode="email" autocomplete="username" required>
+            </label>
+            <label class="campo">
+                <span class="campo__rotulo">Senha</span>
+                <input type="password" id="login-senha" autocomplete="current-password" required>
+            </label>
+            <p class="cartao-form__erro" id="login-erro" hidden></p>
+            <button type="submit" class="botao botao--cheio" id="login-entrar">Entrar</button>
+        </form>
+    </section>
+
+    <!-- ============ PAINEL ============ -->
+    <div class="painel-conteudo" id="tela-painel" hidden>
+
+        <section class="painel-resumo" aria-label="Resumo">
+            <div class="resumo">
+                <span class="resumo__numero" id="n-confirmados">0</span>
+                <span class="resumo__rotulo">confirmados</span>
+            </div>
+            <div class="resumo resumo--destaque">
+                <span class="resumo__numero"><span id="n-lembrados">0</span><small> / <span id="n-lembrados-total">0</span></small></span>
+                <span class="resumo__rotulo">já lembrados</span>
+                <span class="resumo__barra"><span id="barra-lembrados"></span></span>
+            </div>
+            <div class="resumo">
+                <span class="resumo__numero" id="n-nao">0</span>
+                <span class="resumo__rotulo">não vão</span>
+            </div>
+        </section>
+
+        <div class="painel-grade">
+
+            <!-- mensagem -->
+            <section class="painel-cartao painel-mensagem" aria-labelledby="titulo-mensagem">
+                <h2 class="painel-cartao__titulo" id="titulo-mensagem">Mensagem do lembrete</h2>
+                <p class="painel-cartao__ajuda">
+                    Use <button type="button" class="marcador" data-marcador="{nome}">{nome}</button> para o primeiro nome e
+                    <button type="button" class="marcador" data-marcador="{nome_completo}">{nome_completo}</button> para o nome inteiro.
+                    O texto fica salvo neste aparelho.
+                </p>
+                <label class="campo">
+                    <span class="sr-only">Texto do lembrete</span>
+                    <textarea id="mensagem" rows="13" spellcheck="true"></textarea>
+                </label>
+                <div class="painel-mensagem__acoes">
+                    <button type="button" class="botao-link" id="mensagem-padrao"><i class="bi bi-arrow-counterclockwise"></i> Voltar ao texto padrão</button>
+                </div>
+                <details class="painel-mensagem__exemplo">
+                    <summary>Ver como fica para <span id="exemplo-nome">um convidado</span></summary>
+                    <pre class="previa-mensagem" id="exemplo-texto"></pre>
+                </details>
+            </section>
+
+            <!-- convidados -->
+            <section class="painel-cartao painel-lista" aria-labelledby="titulo-lista">
+                <div class="painel-lista__topo">
+                    <h2 class="painel-cartao__titulo" id="titulo-lista">Convidados que confirmaram</h2>
+                    <button type="button" class="botao botao--contorno botao--pequeno" id="copiar-numeros">
+                        <i class="bi bi-clipboard"></i> Copiar números
+                    </button>
+                </div>
+
+                <div class="painel-filtros" role="tablist" aria-label="Filtrar">
+                    <button type="button" class="filtro" role="tab" data-filtro="pendentes" aria-selected="true">Falta lembrar <span id="f-pendentes"></span></button>
+                    <button type="button" class="filtro" role="tab" data-filtro="lembrados" aria-selected="false">Já lembrados <span id="f-lembrados"></span></button>
+                    <button type="button" class="filtro" role="tab" data-filtro="nao" aria-selected="false">Não vão <span id="f-nao"></span></button>
+                </div>
+                <label class="busca painel-busca">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                    <input type="search" id="busca" placeholder="Buscar por nome ou número" aria-label="Buscar convidado" autocomplete="off">
+                </label>
+
+                <a class="botao botao--cheio painel-proximo" id="lembrar-proximo" target="_blank" rel="noopener" hidden>
+                    <i class="bi bi-whatsapp"></i> Lembrar próximo: <span id="proximo-nome"></span>
+                </a>
+
+                <ul class="convidados" id="convidados"></ul>
+                <p class="convidados__vazio" id="vazio" hidden></p>
+            </section>
+        </div>
+    </div>
+
+    <p class="painel__carregando" id="carregando">Carregando…</p>
+</main>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script src="/config.js"></script>
+<script type="module" src="/painel.js"></script>
+</body>
+</html>

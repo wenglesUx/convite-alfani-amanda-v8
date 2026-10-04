@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álfani &amp; Amanda · 13.11.2026</title>
+    <meta name="description" content="Álfani e Amanda convidam para seu jantar de casamento — 13 de novembro de 2026, às 18h, no Espaço Paraíso Eventos, Luziânia - GO.">
+    <meta name="theme-color" content="#f7fafd">
+
+    <!-- meta tags de compartilhamento -->
+    <meta property="og:title" content="Álfani & Amanda · Jantar de Casamento" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="13.11.2026 às 18:00h · Espaço Paraíso Eventos · Jardim Zuleika, Luziânia - GO. Confirme sua presença!" />
+    <!-- TODO: trocar pela URL absoluta da imagem de compartilhamento quando o site for publicado -->
+    <!-- <meta property="og:image" content="https://SEU-DOMINIO/layout-images/convite/og-convite.jpg" /> -->
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S8 41 8 24a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 17-24 32-24 32z' fill='%235f85ac'/%3E%3C/svg%3E">
+
+    <!-- fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lexend:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="preload" as="image" href="/layout-images/convite/fundo-aquarela.webp">
+    <link rel="preload" as="image" href="/layout-images/convite/flores-canto.webp">
+    <link rel="stylesheet" href="/convite.css">
+    <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<!-- ============ SÍMBOLOS SVG REUTILIZÁVEIS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <!-- coração -->
+        <symbol id="coracao" viewBox="0 0 24 22">
+            <path d="M12 21.5S0 14.2 0 6.4A6.3 6.3 0 0 1 12 3.3a6.3 6.3 0 0 1 12 3.1c0 7.8-12 15.1-12 15.1z"/>
+        </symbol>
+        <!-- raminho -->
+        <symbol id="raminho" viewBox="0 0 40 40">
+            <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                <path d="M8 36C16 28 22 18 26 4"/>
+                <path d="M12.5 30.5c-5-1-8-4.5-8.5-9 4.5.5 8 3.8 8.5 9z"/>
+                <path d="M17 24.5c-4.5-2-6.8-6-6.5-10.5 4.2 1.4 6.8 5.5 6.5 10.5z"/>
+                <path d="M21 18c-3.8-2.8-5.2-7-4.2-11.2 3.8 2 5.5 6.5 4.2 11.2z"/>
+                <path d="M15 27.5c4.5.6 8.7-1 11.3-4.8-4.4-.8-8.8 1.2-11.3 4.8z"/>
+                <path d="M19.5 20.8c4.2-.2 7.8-2.8 9.3-6.8-4.3.1-8 2.6-9.3 6.8z"/>
+                <path d="M23.5 13c3.7-1 6.3-4.2 6.6-8.2-3.8.9-6.5 4-6.6 8.2z"/>
+            </g>
+        </symbol>
+        <!-- canto ornamental (inspirado na moldura do convite) -->
+        <symbol id="canto" viewBox="0 0 120 120">
+            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <path d="M6 118V44C6 22 22 6 44 6h74"/>
+                <path d="M16 118V52c0-20 16-36 36-36h66" opacity=".55"/>
+                <path d="M30 30c-8 8-18 4-18-4s10-12 16-6c5 5 1 12-4 10"/>
+                <path d="M30 30c8-8 4-18-4-18"/>
+                <path d="M44 6c0 10-6 16-14 16M6 44c10 0 16-6 16-14"/>
+                <path d="M60 16c6-8 16-8 20 0M16 60c-8 6-8 16 0 20"/>
+            </g>
+        </symbol>
+        <!-- divisor: linha — coração — linha -->
+        <symbol id="divisor" viewBox="0 0 160 16">
+            <path d="M0 8h66M94 8h66" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M80 14.5S72 9.7 72 4.7a4 4 0 0 1 8-1.9 4 4 0 0 1 8 1.9c0 5-8 9.8-8 9.8z" fill="currentColor"/>
+        </symbol>
+        <!-- divisor ondulado -->
+        <symbol id="divisor-onda" viewBox="0 0 200 16">
+            <path d="M0 8c14 0 18-5 30-5s18 8 32 8 14-3 24-3M114 8c10 0 10 3 24 3s20-8 32-8 16 5 30 5" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M100 14.5S92 9.7 92 4.7a4 4 0 0 1 8-1.9 4 4 0 0 1 8 1.9c0 5-8 9.8-8 9.8z" fill="currentColor"/>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ============ MENU ============ -->
+<header class="topo" id="topo">
+    <nav class="menu" aria-label="Navegação principal">
+        <a href="#inicio" class="menu__marca" aria-label="Início">A<svg><use href="#coracao"/></svg>A</a>
+        <button class="menu__botao" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-links">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="menu__links" id="menu-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#o-casal">O casal</a></li>
+            <li><a href="#nosso-dia">O nosso dia</a></li>
+            <li><a href="#local">Local</a></li>
+            <li><a href="#presentes">Presentes</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- ============ 1. HERO ============ -->
+    <section class="secao hero" id="inicio">
+        <img class="flor flor--tl flor--grande" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--grande" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="moldura" aria-hidden="true">
+            <svg class="moldura__canto moldura__canto--tl"><use href="#canto"/></svg>
+            <svg class="moldura__canto moldura__canto--tr"><use href="#canto"/></svg>
+            <svg class="moldura__canto moldura__canto--bl"><use href="#canto"/></svg>
+            <svg class="moldura__canto moldura__canto--br"><use href="#canto"/></svg>
+        </div>
+
+        <div class="conteudo hero__conteudo">
+            <p class="sobretitulo hero-etapa">Jantar de casamento</p>
+            <!-- as letras dos nomes "nascem" de cada A do monograma (ver convite.js) -->
+            <h1 class="hero__nomes" aria-label="Álfani &amp; Amanda">
+                <span class="nome" data-origem="mono-a1">Álfani</span>
+                <span class="e-comercial hero-etapa">&amp;</span>
+                <span class="nome" data-origem="mono-a2">Amanda</span>
+            </h1>
+
+            <div class="monograma hero__monograma" aria-hidden="true">
+                <span id="mono-a1" class="monograma__letra">A</span>
+                <span class="monograma__eixo"><svg><use href="#coracao"/></svg></span>
+                <span id="mono-a2" class="monograma__letra">A</span>
+            </div>
+
+            <p class="hero__data hero-etapa">13 <i>·</i> 11 <i>·</i> 2026</p>
+
+            <a href="#o-casal" class="rolar hero-etapa" aria-label="Rolar para baixo">
+                <i class="bi bi-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ 2. O CASAL / NOSSA HISTÓRIA ============ -->
+    <section class="secao secao--espelho" id="o-casal">
+        <img class="flor flor--tl flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo">
+            <h2 class="titulo revelar">Um caminho<br>que nos trouxe até aqui</h2>
+
+            <blockquote class="citacao revelar">
+                “Deus uniu nossos caminhos e nós sob sua bênção, uniremos nossas vidas para sempre”
+            </blockquote>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <div class="historia">
+                <!-- TODO: confirmar com o casal as datas e textos reais da linha do tempo -->
+                <ol class="linha-tempo revelar">
+                    <li>
+                        <strong>2019</strong>
+                        <span>Nos conhecemos</span>
+                    </li>
+                    <li>
+                        <strong>2022</strong>
+                        <span>Um novo capítulo</span>
+                    </li>
+                    <li>
+                        <strong>13.11.2026</strong>
+                        <span>Nosso grande dia</span>
+                    </li>
+                </ol>
+
+                <figure class="polaroid revelar">
+                    <div class="polaroid__foto">
+                        <!-- Coloque a foto do casal em /layout-images/convite/casal.jpg -->
+                        <img src="/layout-images/convite/casal.jpg" alt="Álfani e Amanda" loading="lazy" onerror="this.remove()">
+                        <div class="polaroid__reserva" aria-hidden="true">
+                            <span>A</span><svg><use href="#coracao"/></svg><span>A</span>
+                        </div>
+                    </div>
+                    <figcaption>Álfani &amp; Amanda</figcaption>
+                    <svg class="polaroid__raminho" aria-hidden="true"><use href="#raminho"/></svg>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 3. O NOSSO DIA ============ -->
+    <section class="secao" id="nosso-dia">
+        <img class="flor flor--tr flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--bl flor--pequena" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo">
+            <h2 class="titulo revelar">O nosso dia</h2>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <div class="nomes-completos revelar">
+                <p>Álfani Dias<br>de Souza</p>
+                <p>Amanda Kelly<br>Pinheiro Sales</p>
+            </div>
+            <p class="convidam revelar">convidam para seu jantar de casamento</p>
+
+            <p class="dia__data revelar">13 <i>·</i> 11 <i>·</i> 2026</p>
+            <p class="dia__hora revelar">18:00<small>h</small></p>
+
+            <svg class="raminho revelar" aria-hidden="true"><use href="#raminho"/></svg>
+
+            <p class="dia__local revelar">Espaço Paraíso – Eventos</p>
+            <p class="dia__endereco revelar">Jardim Zuleika · Luziânia – GO</p>
+
+            <div class="contador revelar" aria-label="Contagem regressiva">
+                <div><span id="dias">0</span><small>dias</small></div>
+                <div><span id="horas">00</span><small>horas</small></div>
+                <div><span id="minutos">00</span><small>min</small></div>
+                <div><span id="segundos">00</span><small>seg</small></div>
+            </div>
+
+            <div class="acoes revelar">
+                <a class="botao botao--contorno" href="#local">
+                    <i class="bi bi-geo-alt"></i> Como chegar
+                </a>
+                <a class="botao botao--contorno" target="_blank" rel="noopener"
+                   href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Jantar+de+Casamento+%C3%81lfani+%26+Amanda&dates=20261113T210000Z/20261114T030000Z&location=Espa%C3%A7o+Para%C3%ADso+Eventos+-+Jardim+Zuleika%2C+Luzi%C3%A2nia+-+GO">
+                    <i class="bi bi-calendar-heart"></i> Salvar na agenda
+                </a>
+            </div>
+
+            <svg class="divisor divisor--onda revelar" aria-hidden="true"><use href="#divisor-onda"/></svg>
+        </div>
+    </section>
+
+    <!-- ============ 4. LOCAL / COMO CHEGAR ============ -->
+    <section class="secao secao--espelho" id="local">
+        <img class="flor flor--tr flor--pequena" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo">
+            <h2 class="titulo revelar">Como chegar</h2>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <p class="dia__local revelar">Espaço Paraíso – Eventos</p>
+            <p class="dia__endereco revelar" id="local-endereco">R. Caçapava, Qd. 8, Lt. 11 · Jardim Zuleika · Luziânia – GO</p>
+
+            <div class="mapa revelar">
+                <iframe
+                    title="Mapa do Espaço Paraíso Eventos"
+                    src="https://www.google.com/maps?q=-16.1359082,-47.9591609&amp;z=16&amp;output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- os links abaixo são montados a partir de config.js (local) -->
+            <div class="acoes acoes--rotas revelar">
+                <a class="botao botao--cheio botao--auto" target="_blank" rel="noopener" id="rota-google"
+                   href="https://share.google/DKx1PzBp9vqPbJ42H">
+                    <i class="bi bi-geo-alt-fill"></i> Abrir no Google Maps
+                </a>
+                <a class="botao botao--contorno" target="_blank" rel="noopener" id="rota-waze"
+                   href="https://waze.com/ul?ll=-16.1359082,-47.9591609&amp;navigate=yes">
+                    <i class="bi bi-sign-turn-right"></i> Ir com Waze
+                </a>
+                <a class="botao botao--contorno" target="_blank" rel="noopener" id="rota-uber"
+                   href="https://m.uber.com/ul/?action=setPickup&amp;pickup=my_location&amp;dropoff%5Blatitude%5D=-16.1359082&amp;dropoff%5Blongitude%5D=-47.9591609">
+                    <i class="bi bi-car-front-fill"></i> Chamar Uber
+                </a>
+            </div>
+            <p class="rotas__nota revelar">O Uber já abre com o local da festa como destino.</p>
+        </div>
+    </section>
+
+    <!-- ============ 5. UM PEDIDO ESPECIAL ============ -->
+    <section class="secao" id="pedido">
+        <img class="flor flor--tl flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--pequena" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo conteudo--estreito">
+            <h2 class="titulo revelar">Um pedido especial</h2>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <p class="pedido__saudacao revelar">Querido convidado,</p>
+            <div class="pedido__texto revelar">
+                <p>Cada convite foi preparado com muito carinho e pensado especialmente para as pessoas que desejamos ter conosco neste dia tão importante. Para nós, será uma alegria imensa compartilhar esse momento com cada convidado escolhido com tanto carinho.</p>
+                <p>Agradecemos a compreensão e o carinho de sempre!</p>
+            </div>
+            <svg class="raminho revelar" aria-hidden="true"><use href="#raminho"/></svg>
+        </div>
+    </section>
+
+    <!-- ============ 6. LISTA DE PRESENTES ============ -->
+    <section class="secao secao--espelho" id="presentes">
+        <img class="flor flor--tl flor--pequena" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo conteudo--estreito">
+            <h2 class="titulo revelar">
+                Lista de Presentes
+                <svg class="titulo__coracao" aria-hidden="true"><use href="#coracao"/></svg>
+            </h2>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+
+            <div class="presentes__texto revelar">
+                <p>Preparamos nossa lista de presentes com muito carinho, pensando em alguns itens que farão parte do nosso novo lar.</p>
+                <p>Caso desejem nos presentear, vocês poderão escolher livremente entre as opções disponíveis em nossa lista.</p>
+            </div>
+
+            <blockquote class="presentes__destaque revelar">
+                <p>Mas queremos deixar uma coisa muito clara: <strong>o presente não é uma obrigação.</strong> A presença e o carinho de cada um de vocês neste momento tão especial já significam muito para nós.</p>
+            </blockquote>
+
+            <div class="presentes__texto revelar">
+                <p>Sintam-se completamente à vontade e escolham apenas se desejarem. O mais importante para nós é celebrar esse dia tão esperado ao lado de vocês.</p>
+            </div>
+
+            <div class="assinatura revelar">
+                <p class="assinatura__carinho">Com carinho,</p>
+                <p class="assinatura__nomes">
+                    Álfani <span class="e-comercial">&amp;</span> Amanda
+                    <svg aria-hidden="true"><use href="#coracao"/></svg>
+                </p>
+            </div>
+
+            <a class="botao botao--cheio botao--auto botao--presentes revelar" href="/lista-de-presentes.html">
+                <i class="bi bi-gift"></i> Ver lista de presentes
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ 7. RSVP ============ -->
+    <section class="secao" id="rsvp">
+        <img class="flor flor--tl flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo">
+            <h2 class="titulo revelar">Você vem celebrar conosco?</h2>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+            <p class="subtitulo revelar">Álfani &amp; Amanda ficariam muito felizes<br>em ter você conosco.</p>
+
+            <form class="cartao-form revelar" id="form-rsvp" novalidate>
+                <p class="cartao-form__intro">
+                    <i class="bi bi-envelope-heart" aria-hidden="true"></i>
+                    Este convite é individual: cada convidado confirma a própria presença.
+                </p>
+
+                <!-- nome + WhatsApp (ou "confirmando como…" se já identificado) -->
+                <div id="rsvp-identificacao"></div>
+
+                <p class="rsvp-anterior" id="rsvp-anterior" hidden></p>
+
+                <fieldset class="campo" data-campo="presenca">
+                    <legend class="campo__rotulo">Você irá?</legend>
+                    <label class="opcao">
+                        <input type="radio" name="presenca" value="sim" required>
+                        <span class="opcao__marca"></span>
+                        Sim, estarei presente
+                    </label>
+                    <label class="opcao">
+                        <input type="radio" name="presenca" value="nao">
+                        <span class="opcao__marca"></span>
+                        Infelizmente não poderei comparecer
+                    </label>
+                    <span class="campo__erro">Escolha uma das opções.</span>
+                </fieldset>
+
+                <p class="cartao-form__erro" id="rsvp-erro" hidden></p>
+
+                <button type="submit" class="botao botao--cheio" id="rsvp-enviar">
+                    Confirmar resposta <i class="bi bi-send"></i>
+                </button>
+                <p class="cartao-form__nota">Os noivos recebem sua resposta na hora.</p>
+            </form>
+
+            <!-- depois de enviar -->
+            <div class="cartao-form cartao-form--sucesso" id="rsvp-sucesso" hidden>
+                <svg class="cartao-form__coracao" aria-hidden="true"><use href="#coracao"/></svg>
+                <h3 id="rsvp-sucesso-titulo"></h3>
+                <p id="rsvp-sucesso-texto"></p>
+                <div class="pendentes" id="rsvp-pendentes" hidden></div>
+                <button type="button" class="botao-link" id="rsvp-alterar">Alterar minha resposta</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 8. ENCERRAMENTO ============ -->
+    <section class="secao secao--espelho final">
+        <img class="flor flor--bl flor--media" src="/layout-images/convite/flores-canto.webp" alt="">
+        <img class="flor flor--br flor--grande" src="/layout-images/convite/flores-canto.webp" alt="">
+
+        <div class="conteudo">
+            <div class="monograma monograma--grande revelar" aria-hidden="true">
+                <span>A</span>
+                <span class="monograma__eixo"><svg><use href="#coracao"/></svg></span>
+                <span>A</span>
+            </div>
+            <p class="hero__data revelar">13 <i>·</i> 11 <i>·</i> 2026</p>
+            <svg class="raminho revelar" aria-hidden="true"><use href="#raminho"/></svg>
+
+            <p class="final__carinho revelar">Com carinho,</p>
+            <p class="final__nomes revelar">Álfani <span class="e-comercial">&amp;</span> Amanda</p>
+            <svg class="divisor revelar" aria-hidden="true"><use href="#divisor"/></svg>
+            <p class="final__frase revelar">Que alegria será ter você conosco.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="rodape">
+    <p>Dúvidas? Estamos a uma mensagem de distância.</p>
+    <a class="rodape__whats" id="link-whats" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+</footer>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script src="/config.js"></script>
+<script src="/convite.js"></script>
+<script type="module" src="/rsvp.js"></script>
+</body>
+</html>
