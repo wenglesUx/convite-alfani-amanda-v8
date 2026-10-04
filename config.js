@@ -30,12 +30,12 @@ window.CASAMENTO = {
 
     /* ---- Banco de dados (Firebase / Firestore) ------------------------- */
     firebase: {
-        apiKey: 'AIzaSyDLv5Kik57zsSFjcOZByy8aqsZHdKUt8uo',
-        authDomain: 'lista-de-presentes-ff7f9.firebaseapp.com',
-        projectId: 'lista-de-presentes-ff7f9',
-        storageBucket: 'lista-de-presentes-ff7f9.appspot.com',
-        messagingSenderId: '527502996022',
-        appId: '1:527502996022:web:7a84e19fd64727fe861e97',
+        apiKey: 'AIzaSyBdXIIEcMKb3aqdS9BXlfeeKULLTDHN9Kg',
+        authDomain: 'alfani-e-amanda.firebaseapp.com',
+        projectId: 'alfani-e-amanda',
+        storageBucket: 'alfani-e-amanda.firebasestorage.app',
+        messagingSenderId: '628016980870',
+        appId: '1:628016980870:web:ca73a8506f95a7e4a70207',
     },
     versaoFirebase: '10.11.0',
     colecoes: {
