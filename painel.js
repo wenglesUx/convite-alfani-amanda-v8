@@ -269,6 +269,48 @@ async function zerarPresentes() {
 }
 $('#zerar-presentes').addEventListener('click', zerarPresentes);
 
+// ---- Confirmações / RSVP (zerar depois dos testes) -----------------------
+function renderConvidadosZerar() {
+    const total = convidados.length;
+    $('#convidados-resumo').textContent = total
+        ? `${total} confirmação(ões) de presença registrada(s).`
+        : 'Nenhuma confirmação registrada ainda.';
+    $('#zerar-convidados').disabled = total === 0;
+}
+
+async function zerarConvidados() {
+    if (PREVIA || !banco) { mostrarAviso('Modo prévia: nada para apagar.'); return; }
+    const total = convidados.length;
+    if (!total) { mostrarAviso('Não há confirmações para apagar.'); return; }
+    const ok = confirm(
+        `Apagar ${total} confirmação(ões) de presença (quem confirmou, quem não vai e quem já foi lembrado)?\n\n` +
+        'O site volta a não ter nenhum convidado respondido. Não pode ser desfeito.',
+    );
+    if (!ok) return;
+
+    const botao = $('#zerar-convidados');
+    botao.disabled = true;
+    botao.textContent = 'Apagando…';
+    try {
+        const { fs, db } = banco;
+        const snap = await fs.getDocs(fs.collection(db, CONF.colecoes.rsvp));
+        const refs = snap.docs.map((d) => d.ref);
+        for (let i = 0; i < refs.length; i += 450) {
+            const lote = fs.writeBatch(db);
+            refs.slice(i, i + 450).forEach((ref) => lote.delete(ref));
+            await lote.commit();
+        }
+        mostrarAviso('Confirmações zeradas.');
+    } catch (e) {
+        console.error(e);
+        mostrarAviso('Não foi possível apagar. Confira as regras do Firestore e tente de novo.');
+    } finally {
+        botao.textContent = 'Apagar todas as confirmações (RSVP)';
+        renderConvidadosZerar();
+    }
+}
+$('#zerar-convidados').addEventListener('click', zerarConvidados);
+
 // ---- Telas ---------------------------------------------------------------
 function mostrar(tela) {
     $('#carregando').hidden = true;
@@ -292,6 +334,7 @@ function iniciarPrevia() {
     mostrar('painel');
     render();
     renderPresentes();
+    renderConvidadosZerar();
 }
 
 // ---- Firebase: login + dados em tempo real -------------------------------
@@ -320,6 +363,7 @@ async function iniciar() {
                     .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
                 mostrar('painel');
                 render();
+                renderConvidadosZerar();
             },
             (e) => {
                 console.error(e);

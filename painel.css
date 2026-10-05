@@ -140,6 +140,7 @@
     color: var(--azul-marinho);
 }
 .painel-cartao__ajuda { font-size: .78rem; line-height: 1.6; margin-bottom: .9rem; color: #6f84a0; }
+.painel-presentes__separador { border: none; border-top: 1px solid var(--azul-nevoa); margin: 1.1rem 0; }
 .marcador {
     padding: .05rem .4rem;
     border: 1px solid var(--azul-nevoa);

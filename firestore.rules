@@ -61,7 +61,9 @@ service cloud.firestore {
       // painel: marcar/desmarcar "lembrado" (não mexe no resto da resposta)
       allow update: if admin()
                     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lembreteEm', 'lembretePor']);
-      allow delete: if false;
+      // admin pode apagar (painel → "Apagar todas as confirmações (RSVP)",
+      // usado para zerar os convidados de teste antes de ir ao ar)
+      allow delete: if admin();
     }
   }
 }
